@@ -47,11 +47,11 @@ $(OBJDIR)/%.o: %.c $(DEPS)
 
 
 
-all: $(MOUSTERDRIVER) inc_build
+all: $(MOUSTERDRIVER) 
 
 .PHONY: adf noparity inc_build debug help
 
-$(MOUSTERDRIVER): $(OBJ)
+$(MOUSTERDRIVER): $(OBJ) inc_build
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(OBJ)  
 	$(SIZE) $@	
 	cp -f $(MOUSTERDRIVER) ${TEMPLATEBIN}
