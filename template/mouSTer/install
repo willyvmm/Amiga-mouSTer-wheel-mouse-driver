@@ -1,0 +1,15 @@
+; mouSTer wheel driver installer script
+; $VER: mouSTer-installer 1.0 (18-02-2024)
+ (copylib
+   (prompt "mouSTer.driver will be copied to C: drawer.")
+   (help "mouSTer driver binaries will be copied to C: drawer.")
+   (source "mouSTer.driver")
+   (confirm)
+   (dest "C:")
+ )
+ (startup ("mouSTer")
+  (command "IF EXISTS C:mouSTer.driver\n  RUN <>NIL: C:mouSTer.driver\nENDIF\n" )
+  (prompt "\n\n\nInserting\n\n RUN <> NIL: C:mouSTer.driver\n\n into the user-startup")
+  (help "\n\nInserting RUN <> NIL: C:mouSTer.driver into the user-startup")
+ )
+( exit "Installation complete!" "\n\n\nPlease reboot your computer." (quiet))
