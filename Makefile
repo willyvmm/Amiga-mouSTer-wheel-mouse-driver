@@ -16,6 +16,7 @@ MOUSTERDRIVER = mouSTer.driver
 MOUSTER=mouSTer
 ADF=$(MOUSTER).adf
 LHAFILE=$(MOUSTER).lha
+LHAEXCLUDE=Disk.info
 OBJ = $(addprefix $(OBJDIR)/, mouSTerDriver.o mouSTerVBInterrupt.o )
 
 
@@ -79,11 +80,12 @@ inc_build: $(MOUSTERDRIVER)
 lha: $(MOUSTERDRIVER)
 	@echo "creating $(LHAFILE)"
 	@rm -f $(LHAFILE)
-	@cd $(TEMPLATEDIR); lha a ../$(LHAFILE) * ; cd ..
+	#it's easier to delete the file after creating the archive
+	@cd $(TEMPLATEDIR); lha a ../$(LHAFILE) * ; lha d ../$(LHAFILE) $(LHAEXCLUDE) ; cd ..
 
 help:
 	@echo "Available targets:"
-	@echo "all - build mouSTer.driver"
+	@echo "all - build mouSTer.driver - default"
 	@echo "adf - build mouSTer.adf image file"
 	@echo "pendrive - build mouSTer.adf and copy to the first available USB pendrive (aka: USB Stisk, aka: USB Memory)"
 	@echo "lha - build lha archive"

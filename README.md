@@ -6,7 +6,7 @@
 
 
 ### Requirements
--     newmouse driver or newmouse compatible OS.
+-     FreeWheel driver or FreeWheel compatible OS.
 
 
 ### Capabilities
